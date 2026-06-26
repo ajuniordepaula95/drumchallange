@@ -227,7 +227,7 @@ function showResult() {
         resultMessage.innerHTML = `Você entrou antes da bateria.<br>${timingText}`;
     } else {
         resultIcon.textContent = "😅";
-        resultTitle.textContent = "VOCÊ HESITOU!";
+        resultTitle.textContent = "ACORDA, TAVA DORMINDO?";
         resultMessage.innerHTML = `A bateria já tinha começado.<br>${timingText}`;
     }
 
