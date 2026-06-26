@@ -298,26 +298,7 @@ async function copyChallengeMessage() {
     }
 }
 
-function buildChallengeMessage() {
-    const milliseconds = Math.round(Math.abs(lastDifference) * 1000);
-    const direction = getShareDirectionText(lastDifference, milliseconds);
-    const pageUrl = window.location.href.split("#")[0];
-
-    return `Eu joguei o Whitney Drum Challenge e fiz ${milliseconds} ms de precisão${direction}.\n\nAgora eu te desafio: tente acertar a entrada da bateria melhor do que eu.\n\n${pageUrl}`;
-}
-
-function getShareDirectionText(difference, milliseconds) {
-    if (milliseconds === 0) {
-        return " no momento exato";
-    }
-
-    if (difference < 0) {
-        return `, tocando ${milliseconds} ms antes`;
-    }
-
-    return `, tocando ${milliseconds} ms depois`;
-}
-
+function getShareTimingText(difference, milliseconds) {
 // ==========================
 // RECORDE LOCAL
 // ==========================
