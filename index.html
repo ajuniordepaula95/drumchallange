@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Whitney Drum Challenge</title>
+
+    <meta name="description" content="Você consegue acertar exatamente a entrada da bateria?">
+
+    <link rel="icon" href="assets/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <div id="background"></div>
+    <div id="overlay"></div>
+
+    <main>
+
+        <section id="startScreen" class="screen active">
+
+            <div class="container start-card">
+
+                <div class="badge">Whitney Edition</div>
+
+                <h1>🥁 Whitney Drum Challenge</h1>
+
+                <p>
+                    Escute a música, espere o momento certo e toque no botão exatamente quando a bateria entrar.
+                </p>
+
+                <div class="tip">
+                    <span>🎧</span>
+                    <p>Para uma experiência melhor, use fones de ouvido.</p>
+                </div>
+
+                <button id="startButton" class="primary-button">
+                    Começar desafio
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <section id="countdownScreen" class="screen">
+
+            <div class="countdown-wrap">
+
+                <span class="countdown-label">Prepare-se</span>
+
+                <div id="countdownNumber">
+                    3
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section id="gameScreen" class="screen">
+
+            <div class="game-area">
+
+                <p class="game-instruction">
+                    Toque quando sentir a entrada da bateria
+                </p>
+
+                <button id="tapButton" aria-label="Toque no momento da bateria">
+                    <span>TOQUE</span>
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <div id="resultModal" class="modal" aria-hidden="true">
+
+        <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="resultTitle">
+
+            <div id="resultIcon" class="result-icon">
+                🏆
+            </div>
+
+            <h2 id="resultTitle">
+                Você tem ritmo!
+            </h2>
+
+            <p id="resultMessage">
+                Você acertou a entrada da bateria.
+            </p>
+
+            <div id="scoreBox" class="score-box">
+                Precisão: <strong id="scoreText">0 ms</strong>
+            </div>
+
+            <div class="precision-container">
+
+                <div class="precision-labels">
+                    <span>Muito cedo</span>
+                    <span>Momento ideal</span>
+                    <span>Muito tarde</span>
+                </div>
+
+                <div class="precision-bar">
+                    <div class="perfect-line"></div>
+                    <div id="precisionDot"></div>
+                </div>
+
+            </div>
+
+            <div class="modal-buttons">
+
+                <button id="playAgain" class="primary-button">
+                    Jogar novamente
+                </button>
+
+                <button id="challengeButton" class="secondary-button">
+                    Desafiar um amigo
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div id="shareModal" class="share-modal" aria-hidden="true">
+
+        <div class="share-modal-content" role="dialog" aria-modal="true" aria-labelledby="shareTitle">
+
+            <button id="closeShareModal" class="close-share" aria-label="Fechar compartilhamento">
+                ×
+            </button>
+
+            <h3 id="shareTitle">
+                Desafie um amigo
+            </h3>
+
+            <p>
+                Copie o convite ou envie direto pelo WhatsApp.
+            </p>
+
+            <textarea id="challengeText" readonly></textarea>
+
+            <div class="share-actions">
+
+                <button id="copyChallengeLink" class="primary-button">
+                    Copiar convite
+                </button>
+
+                <button id="whatsappChallenge" class="secondary-button">
+                    Enviar pelo WhatsApp
+                </button>
+
+            </div>
+
+            <p id="shareFeedback" class="share-feedback"></p>
+
+        </div>
+
+    </div>
+
+
+    <audio id="music" preload="auto">
+        <source src="assets/audio.mp3" type="audio/mpeg">
+    </audio>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

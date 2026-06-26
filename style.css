@@ -1,0 +1,751 @@
+/* ==========================
+   RESET
+========================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: #050505;
+    color: #ffffff;
+}
+
+/* ==========================
+   FUNDO
+========================== */
+
+#background {
+    position: fixed;
+    inset: 0;
+    background-image: url("assets/bateria-bg.webp");
+    background-size: cover;
+    background-position: center;
+    opacity: 0.16;
+    filter: blur(1px);
+    transform: scale(1);
+    animation: backgroundZoom 12s ease-in-out infinite alternate;
+    z-index: -3;
+}
+
+#overlay {
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle at center, rgba(255, 23, 68, 0.18), transparent 38%),
+        linear-gradient(180deg, rgba(5, 5, 5, 0.66), rgba(5, 5, 5, 0.96));
+    z-index: -2;
+}
+
+@keyframes backgroundZoom {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.035);
+    }
+}
+
+/* ==========================
+   BASE
+========================== */
+
+main {
+    position: relative;
+    width: 100%;
+    height: 100dvh;
+}
+
+.screen {
+    display: none;
+    width: 100%;
+    height: 100dvh;
+    padding: 24px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.screen.active {
+    display: flex;
+}
+
+.container {
+    width: 100%;
+    max-width: 540px;
+}
+
+.start-card {
+    padding: 34px 28px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 34px;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(18px);
+    box-shadow: 0 28px 90px rgba(0, 0, 0, 0.38);
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: rgba(255, 23, 68, 0.16);
+    color: #ffffff;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+h1 {
+    margin-bottom: 18px;
+    font-size: clamp(2rem, 6vw, 3.45rem);
+    line-height: 1.08;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+}
+
+h2 {
+    margin-bottom: 8px;
+    font-size: clamp(1.65rem, 4vw, 2.25rem);
+    line-height: 1.08;
+    font-weight: 800;
+    letter-spacing: -0.035em;
+}
+
+h3 {
+    margin-bottom: 8px;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    line-height: 1.12;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+}
+
+p {
+    color: #dedede;
+    font-size: 1.05rem;
+    line-height: 1.65;
+}
+
+/* ==========================
+   DICA
+========================== */
+
+.tip {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin: 26px 0 30px;
+    padding: 16px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.08);
+    text-align: left;
+}
+
+.tip span {
+    flex: 0 0 auto;
+    font-size: 1.55rem;
+}
+
+.tip p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #f3f3f3;
+}
+
+/* ==========================
+   BOTÕES
+========================== */
+
+button {
+    cursor: pointer;
+    border: 0;
+    border-radius: 999px;
+    font-family: "Poppins", sans-serif;
+    transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible {
+    outline: 3px solid rgba(255, 255, 255, 0.75);
+    outline-offset: 5px;
+}
+
+.primary-button {
+    width: 100%;
+    padding: 17px 22px;
+    background: #ff1744;
+    color: #ffffff;
+    font-size: 1.02rem;
+    font-weight: 800;
+    box-shadow: 0 0 38px rgba(255, 23, 68, 0.42);
+}
+
+.primary-button:hover {
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: 0 0 50px rgba(255, 23, 68, 0.54);
+}
+
+.primary-button:active {
+    transform: scale(0.97);
+}
+
+.secondary-button {
+    width: 100%;
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-size: 0.98rem;
+    font-weight: 700;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.secondary-button:hover {
+    background: rgba(255, 255, 255, 0.16);
+    transform: translateY(-1px);
+}
+
+/* ==========================
+   CONTAGEM
+========================== */
+
+.countdown-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.countdown-label {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+#countdownNumber {
+    font-size: clamp(7rem, 28vw, 13rem);
+    line-height: 1;
+    font-weight: 800;
+    text-shadow: 0 0 45px rgba(255, 23, 68, 0.6);
+    animation: countdownPulse 0.8s infinite;
+}
+
+@keyframes countdownPulse {
+    0% {
+        transform: scale(0.82);
+        opacity: 0.42;
+    }
+
+    50% {
+        transform: scale(1.12);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0.82);
+        opacity: 0.42;
+    }
+}
+
+/* ==========================
+   JOGO
+========================== */
+
+.game-area {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 34px;
+}
+
+.game-instruction {
+    max-width: 360px;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 1rem;
+}
+
+#tapButton {
+    position: relative;
+    width: min(72vw, 340px);
+    height: min(72vw, 340px);
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 35% 28%, rgba(255, 255, 255, 0.36), transparent 24%),
+        radial-gradient(circle at center, #ff3159 0%, #ff1744 42%, #b90027 100%);
+    color: #ffffff;
+    font-size: clamp(1.9rem, 8vw, 3rem);
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    box-shadow:
+        inset 0 12px 18px rgba(255, 255, 255, 0.14),
+        inset 0 -18px 32px rgba(0, 0, 0, 0.28),
+        0 0 36px rgba(255, 23, 68, 0.52),
+        0 0 100px rgba(255, 23, 68, 0.28);
+    animation: tapPulse 1.7s ease-in-out infinite;
+}
+
+#tapButton::before {
+    content: "";
+    position: absolute;
+    inset: 12px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+#tapButton span {
+    position: relative;
+    z-index: 2;
+}
+
+#tapButton:hover {
+    transform: scale(1.035);
+}
+
+#tapButton:active,
+#tapButton.tapped {
+    transform: scale(0.92);
+}
+
+#tapButton.energy {
+    animation: tapPulseFast 0.55s ease-in-out infinite;
+}
+
+@keyframes tapPulse {
+    0%,
+    100% {
+        box-shadow:
+            inset 0 12px 18px rgba(255, 255, 255, 0.14),
+            inset 0 -18px 32px rgba(0, 0, 0, 0.28),
+            0 0 34px rgba(255, 23, 68, 0.46),
+            0 0 88px rgba(255, 23, 68, 0.22);
+    }
+
+    50% {
+        box-shadow:
+            inset 0 12px 18px rgba(255, 255, 255, 0.16),
+            inset 0 -18px 32px rgba(0, 0, 0, 0.28),
+            0 0 48px rgba(255, 23, 68, 0.7),
+            0 0 124px rgba(255, 23, 68, 0.36);
+    }
+}
+
+@keyframes tapPulseFast {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.045);
+    }
+}
+
+/* ==========================
+   MODAL DE RESULTADO
+========================== */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px;
+    background: rgba(0, 0, 0, 0.66);
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.24s ease, visibility 0.24s ease;
+    z-index: 10;
+}
+
+.modal.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.modal-content {
+    width: min(640px, 100%);
+    max-height: calc(100dvh - 28px);
+    padding: clamp(18px, 3vh, 26px) clamp(18px, 4vw, 28px);
+    border-radius: 30px;
+    background:
+        linear-gradient(180deg, rgba(32, 32, 32, 0.96), rgba(10, 10, 10, 0.98));
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 30px 100px rgba(0, 0, 0, 0.56);
+    text-align: center;
+    transform: translateY(16px) scale(0.96);
+    transition: transform 0.24s ease;
+}
+
+.modal.active .modal-content {
+    transform: translateY(0) scale(1);
+}
+
+.result-icon {
+    margin-bottom: 8px;
+    font-size: clamp(3rem, 9vh, 4.1rem);
+    line-height: 1;
+}
+
+#resultMessage {
+    margin-bottom: 12px;
+    font-size: clamp(0.92rem, 2.5vw, 1.05rem);
+    line-height: 1.48;
+}
+
+.score-box {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    padding: 9px 15px;
+    border-radius: 999px;
+    background: rgba(255, 23, 68, 0.16);
+    color: #ffffff;
+    font-size: 0.92rem;
+}
+
+.score-box strong {
+    margin-left: 4px;
+}
+
+/* ==========================
+   BARRA DE PRECISÃO
+========================== */
+
+.precision-container {
+    margin: 4px 0 22px;
+}
+
+.precision-labels {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-bottom: 10px;
+    color: rgba(255, 255, 255, 0.66);
+    font-size: 0.72rem;
+    font-weight: 600;
+}
+
+.precision-labels span:first-child {
+    text-align: left;
+}
+
+.precision-labels span:nth-child(2) {
+    text-align: center;
+    color: #ffffff;
+}
+
+.precision-labels span:last-child {
+    text-align: right;
+}
+
+.precision-bar {
+    position: relative;
+    width: 100%;
+    height: 14px;
+    border-radius: 999px;
+    background:
+        linear-gradient(90deg,
+            rgba(255, 255, 255, 0.18),
+            rgba(255, 23, 68, 0.48),
+            rgba(255, 255, 255, 0.18));
+    overflow: visible;
+}
+
+.perfect-line {
+    position: absolute;
+    top: -10px;
+    bottom: -10px;
+    left: 50%;
+    width: 2px;
+    transform: translateX(-50%);
+    background: #ffffff;
+    border-radius: 999px;
+    box-shadow: 0 0 18px rgba(255, 255, 255, 0.7);
+}
+
+#precisionDot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #ffffff;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 24px rgba(255, 255, 255, 0.72);
+    transition: left 0.36s ease;
+}
+
+.modal-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* ==========================
+   POPUP DE COMPARTILHAMENTO
+========================== */
+
+.share-modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px;
+    background: rgba(0, 0, 0, 0.72);
+    backdrop-filter: blur(12px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.22s ease, visibility 0.22s ease;
+    z-index: 20;
+}
+
+.share-modal.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.share-modal-content {
+    position: relative;
+    width: min(520px, 100%);
+    max-height: calc(100dvh - 28px);
+    padding: 28px 22px 22px;
+    border-radius: 28px;
+    background:
+        linear-gradient(180deg, rgba(34, 34, 34, 0.98), rgba(10, 10, 10, 0.98));
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 30px 100px rgba(0, 0, 0, 0.62);
+    text-align: center;
+    transform: translateY(12px) scale(0.96);
+    transition: transform 0.22s ease;
+}
+
+.share-modal.active .share-modal-content {
+    transform: translateY(0) scale(1);
+}
+
+.close-share {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 38px;
+    height: 38px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    font-size: 1.6rem;
+    line-height: 1;
+}
+
+.close-share:hover {
+    background: rgba(255, 255, 255, 0.16);
+}
+
+.share-modal-content p {
+    margin-bottom: 14px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+#challengeText {
+    width: 100%;
+    min-height: 126px;
+    margin-bottom: 14px;
+    padding: 14px;
+    resize: none;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.92rem;
+    line-height: 1.45;
+    outline: none;
+}
+
+.share-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.share-feedback {
+    min-height: 18px;
+    margin-top: 12px;
+    margin-bottom: 0 !important;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.84rem !important;
+}
+
+/* ==========================
+   CONFETES SEM BIBLIOTECA
+========================== */
+
+.confetti-layer {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 50;
+}
+
+.confetti-piece {
+    position: absolute;
+    top: -16px;
+    left: var(--left);
+    width: var(--size);
+    height: calc(var(--size) * 1.6);
+    border-radius: 2px;
+    background: var(--color);
+    opacity: 0.95;
+    animation: confettiFall var(--duration) ease-out forwards;
+}
+
+@keyframes confettiFall {
+    to {
+        transform: translate3d(var(--shift), 112dvh, 0) rotate(var(--rotate));
+        opacity: 0;
+    }
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width: 600px) {
+    .screen {
+        padding: 18px;
+    }
+
+    .start-card {
+        padding: 28px 20px;
+        border-radius: 28px;
+    }
+
+    p {
+        font-size: 0.98rem;
+    }
+
+    #tapButton {
+        width: min(78vw, 330px);
+        height: min(78vw, 330px);
+    }
+
+    .modal,
+    .share-modal {
+        padding: 12px;
+    }
+
+    .modal-content {
+        width: 100%;
+        max-height: calc(100dvh - 24px);
+        border-radius: 26px;
+        padding: 18px 16px;
+    }
+
+    .result-icon {
+        margin-bottom: 6px;
+    }
+
+    .score-box {
+        margin-bottom: 16px;
+    }
+
+    .precision-container {
+        margin-bottom: 18px;
+    }
+
+    .primary-button,
+    .secondary-button {
+        padding: 15px 18px;
+    }
+
+    .share-modal-content {
+        padding: 28px 16px 18px;
+        border-radius: 24px;
+    }
+
+    #challengeText {
+        min-height: 136px;
+    }
+}
+
+@media (max-height: 680px) {
+    .modal-content {
+        padding-top: 14px;
+        padding-bottom: 14px;
+    }
+
+    .result-icon {
+        font-size: 2.65rem;
+        margin-bottom: 5px;
+    }
+
+    h2 {
+        font-size: 1.45rem;
+    }
+
+    #resultMessage {
+        margin-bottom: 9px;
+        font-size: 0.88rem;
+        line-height: 1.38;
+    }
+
+    .score-box {
+        margin-bottom: 14px;
+        padding: 8px 13px;
+        font-size: 0.86rem;
+    }
+
+    .precision-container {
+        margin-bottom: 16px;
+    }
+
+    .primary-button,
+    .secondary-button {
+        padding: 13px 18px;
+        font-size: 0.94rem;
+    }
+}
+
+@media (max-width: 380px) {
+    .precision-labels {
+        font-size: 0.64rem;
+    }
+
+    h2 {
+        font-size: 1.38rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
+}
