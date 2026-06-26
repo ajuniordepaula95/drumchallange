@@ -227,7 +227,7 @@ function showResult() {
         resultMessage.innerHTML = `Você entrou antes da bateria.<br>${timingText}`;
     } else {
         resultIcon.textContent = "😅";
-        resultTitle.textContent = "ACORDA, TAVA DORMINDO?";
+        resultTitle.textContent = "VOCÊ HESITOU!";
         resultMessage.innerHTML = `A bateria já tinha começado.<br>${timingText}`;
     }
 
@@ -298,7 +298,53 @@ async function copyChallengeMessage() {
     }
 }
 
-function getShareTimingText(difference, milliseconds) {
+function buildChallengeMessage() {
+    const milliseconds = Math.round(Math.abs(lastDifference) * 1000);
+    const pageUrl = window.location.href.split("#")[0];
+    const hit = Math.abs(lastDifference) <= TOLERANCE;
+    const timingText = getShareTimingText(lastDifference, milliseconds, hit);
+
+    if (hit) {
+        return `Eu joguei o Whitney Drum Challenge e acertei a entrada da bateria.
+
+${timingText}
+
+Não é fácil ficar dentro da tolerância de 120 ms. Agora eu te desafio: consegue fazer melhor?
+
+${pageUrl}`;
+    }
+
+    return `Eu joguei o Whitney Drum Challenge e ainda não foi dessa vez.
+
+${timingText}
+
+Agora eu te desafio: tenta acertar a entrada da bateria melhor do que eu.
+
+${pageUrl}`;
+}
+
+function getShareTimingText(difference, milliseconds, hit) {
+    let directionText = "";
+
+    if (milliseconds === 0) {
+        directionText = "no momento exato";
+    } else if (difference < 0) {
+        directionText = "antes do momento ideal";
+    } else {
+        directionText = "após o momento ideal";
+    }
+
+    if (hit) {
+        if (milliseconds === 0) {
+            return "Acertei exatamente no tempo ideal.";
+        }
+
+        return `Acertei com precisão de ${milliseconds} ms ${directionText}.`;
+    }
+
+    return `Errei por ${milliseconds} ms ${directionText}.`;
+}
+
 // ==========================
 // RECORDE LOCAL
 // ==========================
